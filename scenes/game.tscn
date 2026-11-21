@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://7fngfmfwj2cj"]
+
+[ext_resource type="Texture2D" uid="uid://caprjg8ttjaw4" path="res://assets/background/Parallax0.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://nliol7wdgux0" path="res://scenes/frog.tscn" id="2_yqjtg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jh35h"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+
+[node name="game" type="Node2D" unique_id=879334379]
+
+[node name="Parallax0" type="Sprite2D" parent="." unique_id=421168558]
+position = Vector2(396, 766)
+texture = ExtResource("1_uwrxv")
+
+[node name="frog" parent="." unique_id=733220994 instance=ExtResource("2_yqjtg")]
+position = Vector2(102, 321)
+scale = Vector2(1.5, 1.5)
+
+[node name="world boundary" type="StaticBody2D" parent="." unique_id=569809554]
+
+[node name="ceiling" type="CollisionShape2D" parent="world boundary" unique_id=546524454]
+position = Vector2(248, 0)
+shape = SubResource("WorldBoundaryShape2D_jh35h")
+
+[node name="floor" type="CollisionShape2D" parent="world boundary" unique_id=1040532460]
+position = Vector2(248, 851)
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
