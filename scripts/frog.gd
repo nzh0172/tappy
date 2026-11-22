@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+class_name frog
+
 const FLY_FORCE: float = -350
 var _gravity: float = ProjectSettings.get_setting('physics/2d/default_gravity') # Get project settings
+#var _die: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -25,8 +28,9 @@ var _gravity: float = ProjectSettings.get_setting('physics/2d/default_gravity') 
 func _physics_process(delta: float) -> void:
 	velocity.y += _gravity * delta
 	move_and_slide()
-	if is_on_floor():
-		pass
+	if is_on_floor() or is_on_ceiling():
+		print("die")
+		die()
 
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,3 +38,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		velocity.y = FLY_FORCE
 		animation_player.play("bounce")
 	
+func die() -> void:
+	get_tree().paused = true

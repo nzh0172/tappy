@@ -23,8 +23,6 @@ position = Vector2(512, -240)
 [node name="lower spawn marker" type="Marker2D" parent="." unique_id=1135318235]
 position = Vector2(521, 6)
 
-[node name="pipes" parent="." unique_id=716601904 instance=ExtResource("1_lnu2h")]
-
 [node name="Parallax0" type="Sprite2D" parent="." unique_id=421168558]
 position = Vector2(396, 766)
 texture = ExtResource("1_uwrxv")
@@ -36,7 +34,7 @@ position = Vector2(248, 0)
 shape = SubResource("WorldBoundaryShape2D_jh35h")
 
 [node name="floor" type="CollisionShape2D" parent="world boundary" unique_id=1040532460]
-position = Vector2(248, 851)
+position = Vector2(248, 625)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="frog" parent="." unique_id=733220994 instance=ExtResource("2_yqjtg")]
