@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://7fngfmfwj2cj"]
 
+[ext_resource type="PackedScene" uid="uid://d0jvylqtlms5y" path="res://scenes/pipes.tscn" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://caprjg8ttjaw4" path="res://assets/background/Parallax0.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://nliol7wdgux0" path="res://scenes/frog.tscn" id="2_yqjtg"]
 
@@ -12,10 +13,11 @@ normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jh35h"]
-
 [node name="game" type="Node2D" unique_id=879334379]
 script = SubResource("GDScript_yqjtg")
+
+[node name="pipes" parent="." unique_id=716601904 instance=ExtResource("1_lnu2h")]
+position = Vector2(267, -355)
 
 [node name="Parallax0" type="Sprite2D" parent="." unique_id=421168558]
 position = Vector2(396, 766)
@@ -33,11 +35,3 @@ shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="frog" parent="." unique_id=733220994 instance=ExtResource("2_yqjtg")]
 position = Vector2(84, 190)
-
-[node name="Label" type="Label" parent="." unique_id=1299540609]
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 102.0
-offset_bottom = 43.0
-text = "is on floor: "
-label_settings = SubResource("LabelSettings_jh35h")

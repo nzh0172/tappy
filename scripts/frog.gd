@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const FLY_FORCE: float = -350
 var _gravity: float = ProjectSettings.get_setting('physics/2d/default_gravity') # Get project settings
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 # move_and_slide() no need delta except gravity 
@@ -31,4 +32,5 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fly"):
 		velocity.y = FLY_FORCE
+		animation_player.play("bounce")
 	
