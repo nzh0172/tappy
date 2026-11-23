@@ -7,6 +7,8 @@ extends Node2D
 
 @export var pipes: PackedScene
 
+# main menu
+var MAIN = load("uid://8yhyev0gaydb")
 
 func spawn_pipes() -> void:
 	var new_pipes: Pipes = pipes.instantiate()
@@ -21,3 +23,7 @@ func spawn_pipes() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_pipes()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("main menu"):
+		get_tree().change_scene_to_packed(MAIN)

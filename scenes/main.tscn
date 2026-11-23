@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://8yhyev0gaydb"]
+
+[ext_resource type="Script" uid="uid://c4w5idpd6sdi5" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cjjpis1aeqtay" path="res://assets/background/MainScreen.png" id="2_tbgi4"]
+[ext_resource type="FontFile" uid="uid://ydm83fh153b3" path="res://assets/fonts/TitanOne-Regular.ttf" id="3_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dckngyykc142w" path="res://assets/audio/bgm_menu.mp3" id="4_o6xl0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font = ExtResource("3_tefeu")
+font_size = 30
+outline_size = 28
+outline_color = Color(0.5198836, 0.42897347, 1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_jh35h"]
+font_names = PackedStringArray("Aller")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font = SubResource("SystemFont_jh35h")
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ekxnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press play:label_settings:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("press play:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bqqt6"]
+resource_name = "flashing text"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press play:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45438725, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1.2574322, 1.2574322, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
+_data = {
+&"RESET": SubResource("Animation_ekxnf"),
+&"flashing text": SubResource("Animation_bqqt6")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jh35h"]
+font = ExtResource("3_tefeu")
+font_size = 79
+outline_size = 28
+outline_color = Color(0.5198836, 0.42897347, 1, 1)
+
+[node name="Control" type="Control" unique_id=913225609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jyhfs")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=501663607]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_tbgi4")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=2023205675]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="highscore label" type="Label" parent="MarginContainer2" unique_id=569633306]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "HIGHSCORE"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+
+[node name="highscore num" type="Label" parent="MarginContainer2" unique_id=1206776810]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "000"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=646633278]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -20.0
+offset_right = 32.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="press play" type="Label" parent="MarginContainer3" unique_id=736527917]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Tap to START"
+label_settings = SubResource("LabelSettings_bqqt6")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer3" unique_id=1556961205]
+libraries/ = SubResource("AnimationLibrary_wu84c")
+autoplay = &"flashing text"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1088374255]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 172
+
+[node name="game title" type="Label" parent="MarginContainer" unique_id=986657838]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TAPPY"
+label_settings = SubResource("LabelSettings_jh35h")
+horizontal_alignment = 1
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1812315041]
+stream = ExtResource("4_o6xl0")
+volume_db = -22.103
+autoplay = true
+parameters/looping = true
