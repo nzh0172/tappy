@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d0jvylqtlms5y"]
+
+[ext_resource type="PackedScene" uid="uid://di8lcgumfc3ma" path="res://scenes/scoring_laser.tscn" id="1_3ahhd"]
+[ext_resource type="PackedScene" uid="uid://c0ig0vodri2jp" path="res://scenes/pipe.tscn" id="1_f17p0"]
+[ext_resource type="Script" uid="uid://ry6i0qbrabpm" path="res://scripts/pipes.gd" id="1_prsvi"]
+
+[node name="pipes" type="Node2D" unique_id=716601904]
+script = ExtResource("1_prsvi")
+
+[node name="scoring laser" parent="." unique_id=485427594 instance=ExtResource("1_3ahhd")]
+position = Vector2(0, 499)
+
+[node name="upper" parent="." unique_id=1594224442 instance=ExtResource("1_f17p0")]
+position = Vector2(4, 0)
+
+[node name="lower" parent="." unique_id=704632625 instance=ExtResource("1_f17p0")]
+position = Vector2(-3, 1208)
+rotation = -3.1415925
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2011051802]
+position = Vector2(127, 601)
+
+[connection signal="body_entered" from="scoring laser" to="." method="_on_scoring_laser_body_entered" flags=6]
+[connection signal="body_entered" from="upper" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="lower" to="." method="_on_pipe_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

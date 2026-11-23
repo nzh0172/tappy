@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://di8lcgumfc3ma"]
+
+[ext_resource type="Texture2D" uid="uid://501hre7qc30a" path="res://assets/items/laser2.png" id="1_3ktaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ktaf"]
+size = Vector2(30, 214)
+
+[sub_resource type="Animation" id="Animation_3ktaf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_shsor"]
+resource_name = "laser glow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.06526955, 0.06526955, 0.06526955, 1), Color(0.36915392, 0.36915392, 0.36915392, 1), Color(0.06526955, 0.06526955, 0.06526955, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgjmb"]
+_data = {
+&"RESET": SubResource("Animation_3ktaf"),
+&"laser glow": SubResource("Animation_shsor")
+}
+
+[node name="scoring laser" type="Area2D" unique_id=485427594]
+position = Vector2(-7, -11)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=365791035]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 107)
+scale = Vector2(1.8, 8.958)
+texture = ExtResource("1_3ktaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417551629]
+position = Vector2(32, 108)
+scale = Vector2(0.24000245, 1)
+shape = SubResource("RectangleShape2D_3ktaf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=388579550]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_sgjmb")
+autoplay = &"laser glow"
