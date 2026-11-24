@@ -20,6 +20,8 @@ rotation = -3.1415925
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2011051802]
 position = Vector2(127, 601)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=847049808]
+
 [connection signal="body_entered" from="scoring laser" to="." method="_on_scoring_laser_body_entered" flags=6]
 [connection signal="body_entered" from="upper" to="." method="_on_pipe_body_entered"]
 [connection signal="body_entered" from="lower" to="." method="_on_pipe_body_entered"]

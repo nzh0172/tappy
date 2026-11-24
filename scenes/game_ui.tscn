@@ -3,6 +3,7 @@
 [ext_resource type="LabelSettings" uid="uid://clvjx6o1fsdko" path="res://resources/highscore_label.tres" id="1_rns2u"]
 [ext_resource type="Script" uid="uid://c2371k3iebyxj" path="res://scripts/game_ui.gd" id="1_u001w"]
 [ext_resource type="LabelSettings" uid="uid://b4yhqle5gihes" path="res://resources/game_over_label.tres" id="2_u001w"]
+[ext_resource type="AudioStream" uid="uid://bvp28n8nn233s" path="res://assets/audio/game_over.wav" id="4_u2dgd"]
 
 [node name="Control" type="Control" unique_id=1552308992]
 process_mode = 3
@@ -37,3 +38,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "GAME OVER !"
 label_settings = ExtResource("2_u001w")
+
+[node name="press jump label" type="Label" parent="MarginContainer" unique_id=1418283003]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TAP TO RETRY"
+label_settings = ExtResource("2_u001w")
+
+[node name="jump label timer" type="Timer" parent="." unique_id=1955316108]
+wait_time = 2.0
+one_shot = true
+
+[node name="game over sound" type="AudioStreamPlayer" parent="." unique_id=479466520]
+stream = ExtResource("4_u2dgd")
+
+[connection signal="timeout" from="jump label timer" to="." method="_on_jump_label_timer_timeout"]

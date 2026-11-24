@@ -6,6 +6,9 @@ const FLY_FORCE: float = -350
 var _gravity: float = ProjectSettings.get_setting('physics/2d/default_gravity') # Get project settings
 #var _die: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var engine: AudioStreamPlayer = $Engine
+@onready var score_sound: AudioStreamPlayer = $"Score Sound"
+
 
 
 # move_and_slide() no need delta except gravity 
@@ -31,7 +34,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() or is_on_ceiling():
 		print("die")
 		die()
-
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fly"):
@@ -45,3 +47,4 @@ func die() -> void:
 func score() -> void:
 	GameManager.score += 1
 	SignalHub.add_score_emit() # update score label ui
+	score_sound.play()

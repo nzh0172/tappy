@@ -2,6 +2,9 @@ extends Control
 
 @onready var highscore_label: Label = $"MarginContainer/highscore label"
 @onready var game_over_label: Label = $"MarginContainer/game over label"
+@onready var press_jump_label: Label = $"MarginContainer/press jump label"
+@onready var jump_label_timer: Timer = $"jump label timer"
+@onready var game_over_sound: AudioStreamPlayer = $"game over sound"
 
 # Signal hub is a design pattern that centralize signal connections into one
 # similar to Autoloaded game manager, it is global throughout the project.
@@ -18,6 +21,8 @@ func ui_add_score() -> void:
 	
 func ui_game_over() -> void:
 	game_over_label.show()
+	game_over_sound.play()
+	jump_label_timer.start()
 
 # GameUI Control node > Process is set to Always
 # As the whole game tree paused, unable to receive input, so must set process to always
@@ -27,4 +32,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		# No need to do var manager = GameManager.new() and reference
 		# GameManager (autoload/global) is readily available
 		# All scenes are preloaded now on GameManager.
-		GameManager.load_main_scene() 
+		GameManager.load_main_scene()
+	if jump_label_timer.is_stopped() and press_jump_label.is_visible() and event.is_action_pressed("fly"):
+		GameManager.load_main_scene()
+
+func _on_jump_label_timer_timeout() -> void:
+	game_over_label.hide()
+	press_jump_label.show()
