@@ -46,7 +46,10 @@ wait_time = 1.5
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1462411542]
+process_mode = 3
 
 [node name="Control" parent="CanvasLayer" unique_id=1552308992 instance=ExtResource("5_iywne")]
 
+[connection signal="add_score" from="frog" to="CanvasLayer/Control" method="_on_frog_add_score"]
+[connection signal="game_over" from="frog" to="CanvasLayer/Control" method="_on_frog_game_over"]
 [connection signal="timeout" from="spawn timer" to="." method="_on_spawn_timer_timeout"]

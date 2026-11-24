@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c635ln2g4je5q"]
 
 [ext_resource type="LabelSettings" uid="uid://clvjx6o1fsdko" path="res://resources/highscore_label.tres" id="1_rns2u"]
+[ext_resource type="Script" uid="uid://c2371k3iebyxj" path="res://scripts/game_ui.gd" id="1_u001w"]
 [ext_resource type="LabelSettings" uid="uid://b4yhqle5gihes" path="res://resources/game_over_label.tres" id="2_u001w"]
 
 [node name="Control" type="Control" unique_id=1552308992]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u001w")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1721295943]
 layout_mode = 1

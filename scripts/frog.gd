@@ -7,6 +7,8 @@ var _gravity: float = ProjectSettings.get_setting('physics/2d/default_gravity') 
 #var _die: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+signal add_score
+signal game_over
 
 # move_and_slide() no need delta except gravity 
 # If need acceleration (gravity), multiply by delta
@@ -40,3 +42,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func die() -> void:
 	get_tree().paused = true
+	game_over.emit() # show game over label ui 
+	
+func score() -> void:
+	GameManager.score += 1
+	add_score.emit() # update score label ui

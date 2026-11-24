@@ -43,4 +43,7 @@ func _on_pipe_body_entered(body: Node2D) -> void:
 # Set the signal to one-shot to avoid double score (frog retrigger on when flying on certain way)
 # Signals > Edit method > Advanced > One-shot
 func _on_scoring_laser_body_entered(body: Node2D) -> void:
-	print("_on_scoring_laser_body_entered: %s %s" % [name, body.name])
+	#print("_on_scoring_laser_body_entered: %s %s" % [name, body.name])
+	
+	if body is frog:
+		body.score()
