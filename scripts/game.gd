@@ -21,13 +21,7 @@ func spawn_pipes() -> void:
 func _on_spawn_timer_timeout() -> void:
 	spawn_pipes()
 	
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("main menu"):
-		# No need to do var manager = GameManager.new() and reference
-		# GameManager (autoload/global) is readily available
-		# All scenes are preloaded now on GameManager.
-		GameManager.load_main_scene() 
-		
+# Press key to main menu is now handled by game_ui
 		
 # Use CanvasLayer node to separate the UI from the game
 # UI (screen space/viewport), game (world space)

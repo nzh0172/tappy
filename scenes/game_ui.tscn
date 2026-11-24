@@ -5,6 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://b4yhqle5gihes" path="res://resources/game_over_label.tres" id="2_u001w"]
 
 [node name="Control" type="Control" unique_id=1552308992]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
