@@ -7,9 +7,6 @@ extends Node2D
 
 @export var pipes: PackedScene
 
-# main menu
-var MAIN = load("uid://8yhyev0gaydb")
-
 func spawn_pipes() -> void:
 	var new_pipes: Pipes = pipes.instantiate()
 	var pipe_y: float = randf_range(lower_spawn.position.y, upper_spawn.position.y)
@@ -26,4 +23,9 @@ func _on_spawn_timer_timeout() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("main menu"):
-		get_tree().change_scene_to_packed(MAIN)
+		# No need to do var manager = GameManager.new() and reference
+		# GameManager (autoload/global) is readily available
+		# All scenes are preloaded now on GameManager.
+		GameManager.load_main_scene() 
+		
+		
