@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://d0jvylqtlms5y" path="res://scenes/pipes.tscn" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://caprjg8ttjaw4" path="res://assets/background/Parallax0.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://nliol7wdgux0" path="res://scenes/frog.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c635ln2g4je5q" path="res://scenes/game_ui.tscn" id="5_iywne"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jh35h"]
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 
-[node name="game" type="Node2D" unique_id=879334379]
+[node name="game" type="Node" unique_id=57428538]
 script = ExtResource("1_lbhrr")
 pipes = ExtResource("1_lnu2h")
 
@@ -43,5 +44,9 @@ position = Vector2(84, 190)
 [node name="spawn timer" type="Timer" parent="." unique_id=1074907981]
 wait_time = 1.5
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1462411542]
+
+[node name="Control" parent="CanvasLayer" unique_id=1552308992 instance=ExtResource("5_iywne")]
 
 [connection signal="timeout" from="spawn timer" to="." method="_on_spawn_timer_timeout"]

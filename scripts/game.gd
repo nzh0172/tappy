@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # Use Marker2D in the world to spawn our pipes
 @onready var upper_spawn: Marker2D = $"upper spawn marker"
@@ -29,3 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		GameManager.load_main_scene() 
 		
 		
+# Use CanvasLayer node to separate the UI from the game
+# UI (screen space/viewport), game (world space)
+# Canvas items must be setup like this, if not the game UI breaks because canvas items have no screen to anchor to since the world is infinite.
+"""
+Game (plain Node, not Node2D/3D)
+└ game nodes (character, collision, timer, etc) -- these are drawn in world space
+└ Canvas Layer node                             -- these are drawn in screen space
+     └ Game UI (Control node)
+"""

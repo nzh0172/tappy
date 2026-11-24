@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c635ln2g4je5q"]
+
+[ext_resource type="LabelSettings" uid="uid://clvjx6o1fsdko" path="res://resources/highscore_label.tres" id="1_rns2u"]
+[ext_resource type="LabelSettings" uid="uid://b4yhqle5gihes" path="res://resources/game_over_label.tres" id="2_u001w"]
+
+[node name="Control" type="Control" unique_id=1552308992]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1721295943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="highscore label" type="Label" parent="MarginContainer" unique_id=332150668]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0000"
+label_settings = ExtResource("1_rns2u")
+
+[node name="game over label" type="Label" parent="MarginContainer" unique_id=1195448017]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GAME OVER !"
+label_settings = ExtResource("2_u001w")

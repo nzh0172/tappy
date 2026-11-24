@@ -2,14 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c4w5idpd6sdi5" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cjjpis1aeqtay" path="res://assets/background/MainScreen.png" id="2_tbgi4"]
-[ext_resource type="FontFile" uid="uid://ydm83fh153b3" path="res://assets/fonts/TitanOne-Regular.ttf" id="3_tefeu"]
+[ext_resource type="LabelSettings" uid="uid://clvjx6o1fsdko" path="res://resources/highscore_label.tres" id="3_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://dckngyykc142w" path="res://assets/audio/bgm_menu.mp3" id="4_o6xl0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
-font = ExtResource("3_tefeu")
-font_size = 30
-outline_size = 28
-outline_color = Color(0.5198836, 0.42897347, 1, 1)
+[ext_resource type="LabelSettings" uid="uid://byexybrmwmrc" path="res://resources/title_label.tres" id="4_tbgi4"]
 
 [sub_resource type="SystemFont" id="SystemFont_jh35h"]
 font_names = PackedStringArray("Aller")
@@ -69,12 +64,6 @@ _data = {
 &"flashing text": SubResource("Animation_bqqt6")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_jh35h"]
-font = ExtResource("3_tefeu")
-font_size = 79
-outline_size = 28
-outline_color = Color(0.5198836, 0.42897347, 1, 1)
-
 [node name="Control" type="Control" unique_id=913225609]
 layout_mode = 3
 anchors_preset = 15
@@ -106,14 +95,14 @@ theme_override_constants/margin_right = 20
 layout_mode = 2
 size_flags_horizontal = 0
 text = "HIGHSCORE"
-label_settings = SubResource("LabelSettings_ekxnf")
+label_settings = ExtResource("3_tbgi4")
 horizontal_alignment = 1
 
 [node name="highscore num" type="Label" parent="MarginContainer2" unique_id=1206776810]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "000"
-label_settings = SubResource("LabelSettings_ekxnf")
+label_settings = ExtResource("3_tbgi4")
 horizontal_alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=646633278]
@@ -152,7 +141,7 @@ theme_override_constants/margin_top = 172
 layout_mode = 2
 size_flags_horizontal = 4
 text = "TAPPY"
-label_settings = SubResource("LabelSettings_jh35h")
+label_settings = ExtResource("4_tbgi4")
 horizontal_alignment = 1
 
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=1812315041]
