@@ -32,3 +32,8 @@ Game (plain Node, not Node2D/3D)
 └ Canvas Layer node                             -- these are drawn in screen space
      └ Game UI (Control node)
 """
+
+# Parallax2D for scrolling bg
+#- Repeat size: width of the original image
+#- Autoscroll: How fast the scroll is
+#- Scroll scale and offset: Used with camera (please scroll past the camera at the same speed the camera moves)
