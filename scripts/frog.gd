@@ -45,6 +45,5 @@ func die() -> void:
 	SignalHub.game_over_emit()  # show game over label ui 
 	
 func score() -> void:
-	GameManager.score += 1
-	SignalHub.add_score_emit() # update score label ui
+	ScoreManager.add_score()
 	score_sound.play()

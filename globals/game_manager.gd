@@ -5,7 +5,6 @@ extends Node
 
 
 var lives = 3
-var score: int = 0
 
 const MAIN = preload("uid://8yhyev0gaydb")
 const GAME = preload("uid://7fngfmfwj2cj")

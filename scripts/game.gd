@@ -7,6 +7,9 @@ extends Node
 
 @export var pipes: PackedScene
 
+func _ready() -> void:
+	ScoreManager.reset_score()
+
 func spawn_pipes() -> void:
 	var new_pipes: Pipes = pipes.instantiate()
 	var pipe_y: float = randf_range(lower_spawn.position.y, upper_spawn.position.y)

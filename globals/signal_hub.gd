@@ -1,10 +1,12 @@
 extends Node
 
-signal add_score
+# Signals can also receive parameter
+signal add_score(score: int)
 signal game_over
 
-func add_score_emit() -> void:
-	add_score.emit()
+# Must match signal param and function param
+func add_score_emit(score: int) -> void:
+	add_score.emit(score)
 	
 func game_over_emit() -> void:
 	game_over.emit()

@@ -16,8 +16,9 @@ func _ready() -> void:
 	SignalHub.add_score.connect(ui_add_score)
 	SignalHub.game_over.connect(ui_game_over)
 
-func ui_add_score() -> void:
-	highscore_label.text = "%04d" % GameManager.score
+# The function parameter MUST match the signal's parameter (if signal use param)
+func ui_add_score(score: int) -> void:
+	highscore_label.text = "%04d" % score
 	
 func ui_game_over() -> void:
 	game_over_label.show()
