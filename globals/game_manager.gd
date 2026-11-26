@@ -19,7 +19,7 @@ Transition is useful if the game needs to preload a lot of resources
 '''
 
 func load_main_scene() -> void:
-	get_tree().change_scene_to_packed(MAIN)
+	FadeTransition.load_main_scene()
 
 func load_game_scene() -> void:
 	get_tree().change_scene_to_packed(SIMPLE_TRANSITION)

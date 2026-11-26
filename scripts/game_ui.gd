@@ -33,9 +33,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		# No need to do var manager = GameManager.new() and reference
 		# GameManager (autoload/global) is readily available
 		# All scenes are preloaded now on GameManager.
-		GameManager.load_main_scene()
+		FadeTransition.load_main_scene()
 	if jump_label_timer.is_stopped() and press_jump_label.is_visible() and event.is_action_pressed("fly"):
-		GameManager.load_main_scene()
+		FadeTransition.load_main_scene()
 
 func _on_jump_label_timer_timeout() -> void:
 	game_over_label.hide()
